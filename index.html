@@ -85,7 +85,45 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
 
 
+<script type="text/javascript">
+	
 
+			var model;
+
+			function loadObject(){
+			    var loader = new THREE.GLTFLoader(loadingManager);
+
+			    loader.load('citylow.gltf',
+			        function ( gltf ) {
+
+
+			            model = gltf;
+			            scene.add( model.scene );
+
+
+			            init();
+
+			        },
+			        function ( xhr ) {
+			            //console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+			        },
+			        function ( error ) {
+			            //console.log( 'An error happened' );
+			        }
+			    );
+			}
+
+			loadObject()
+
+			function init() {  
+			    model.scene.scale.set(4,4,4)
+    			model.scene.position.set(0,-40, -10)
+    			model.scene.rotation.set(0,0, 0)	
+
+			}
+
+	
+</script>
 
 
 
