@@ -382,9 +382,43 @@ scene.add( starField );
 			document.addEventListener('wheel', mousewheel, false)
   			
 
+
+document.addEventListener("touchstart", touchStart, false);
+document.addEventListener("touchmove", touchMove, false);
+
+var start = {x:0,y:0};
+
+function touchStart(event) {
+
+start.x = event.touches[0].pageX;
+start.y = event.touches[0].pageY;
+}
+
+function touchMove(event){
+
+offset = {};
+
+offset.x = start.x - event.touches[0].pageX;
+offset.y = start.y - event.touches[0].pageY;
+
+console.log(offset.y)
+
+document.addEventListener("touchmove", mousewheel, false);
+
+return offset;
+
+}
+
+
+
+  			
+
 			// TWEENING THE ELEMENTS :
   			
 			function mousewheel(e){
+
+
+
 
 				var slide = 0;
 
@@ -400,7 +434,7 @@ scene.add( starField );
 
 				//SWITCH TO NEXT SLIDE (NAME) : 
 
-				if(e.deltaY > 0 && camera.position.y == 0){			
+				if(e.deltaY > 0 || offset.y > 0 && camera.position.y == 0){			
 					
 				 TweenMax.fromTo(camera.position, 1, {y: camera.position.y,}, {y:'+=-10', ease: Expo.easeInOut, onUpdate: function(){
 				 	document.removeEventListener('wheel', mousewheel)}, onComplete: function(){document.addEventListener('wheel', mousewheel)}});
@@ -425,7 +459,7 @@ scene.add( starField );
 				}
 
 
-				if(e.deltaY < 0 && camera.position.y == -10){
+				if(e.deltaY < 0 || offset.y < 0 && camera.position.y == -10){
 
 				 TweenMax.fromTo(camera.position, 1, {y: camera.position.y,}, {y:'+=10', ease: Expo.easeInOut, onUpdate: function(){
 				 	document.removeEventListener('wheel', mousewheel)}, onComplete: function(){document.addEventListener('wheel', mousewheel)}});
@@ -452,7 +486,7 @@ scene.add( starField );
 				//SWITCH TO NEXT SLIDE (FROM) : 
 		
 
-				if(e.deltaY > 0 && camera.position.y == -10){
+				if(e.deltaY > 0 || offset.y > 0 && camera.position.y == -10){
 
 				TweenMax.fromTo(camera.position, 1.5, {y: camera.position.y,}, {y:'+=-10', ease: Expo.easeInOut, onUpdate: function(){
 				 	document.removeEventListener('wheel', mousewheel)}, onComplete: function(){document.addEventListener('wheel', mousewheel)}});
@@ -480,7 +514,7 @@ scene.add( starField );
 				}
 
 
-				if(e.deltaY < 0 && camera.position.y == -20){
+				if(e.deltaY < 0 || offset.y < 0 && camera.position.y == -20){
 
 				 TweenMax.fromTo(camera.position, 1, {y: camera.position.y,}, {y:'+=10', ease: Expo.easeInOut, onUpdate: function(){
 				 	document.removeEventListener('wheel', mousewheel)}, onComplete: function(){document.addEventListener('wheel', mousewheel)}});
@@ -519,7 +553,7 @@ scene.add( starField );
 
 
 
-				if(e.deltaY > 0 && camera.position.y == -20){
+				if(e.deltaY > 0 || offset.y > 0 && camera.position.y == -20){
 
 				TweenMax.fromTo(camera.position, 1.5, {y: camera.position.y,}, {y:'+=-10', ease: Elastic.easeOut.config(0.2, 0.3), onUpdate: function(){
 				 	document.removeEventListener('wheel', mousewheel)}, onComplete: function(){document.addEventListener('wheel', mousewheel)}});
@@ -546,7 +580,7 @@ scene.add( starField );
 					}
 
 
-				if(e.deltaY < 0 && camera.position.y == -30){
+				if(e.deltaY < 0 || offset.y < 0 && camera.position.y == -30){
 
 				 TweenMax.fromTo(camera.position, 1, {y: camera.position.y,}, {y:'+=10', ease: Expo.easeInOut, onUpdate: function(){
 				 	document.removeEventListener('wheel', mousewheel)}, onComplete: function(){document.addEventListener('wheel', mousewheel)}});
@@ -576,7 +610,7 @@ scene.add( starField );
 
 
 
-				if(e.deltaY > 0 && camera.position.y == -30){
+				if(e.deltaY > 0 || offset.y > 0 && camera.position.y == -30){
 
 					for (var i = 0; i < cubearray.length; i++) {
 
@@ -644,7 +678,7 @@ scene.add( starField );
 
 
 
-				if(e.deltaY < 0 && camera.position.y == -40){
+				if(e.deltaY < 0 || offset.y < 0 && camera.position.y == -40){
 
 
 
@@ -743,6 +777,16 @@ scene.add( starField );
 				
 
 			}
+
+
+
+
+
+
+
+
+
+
 
 
 
