@@ -131,7 +131,7 @@
 
 
 
-			controls = new DeviceOrientationControls(camera);
+			
 
 
 
