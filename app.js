@@ -380,6 +380,49 @@ scene.add( starField );
 
 
 			document.addEventListener('wheel', mousewheel, false)
+
+
+
+
+
+
+
+
+var hammer = new Hammer(document);
+
+var swipe = new Hammer.Swipe();
+
+hammer.add(swipe);
+
+hammer.on('swipeup', function(ev) {
+
+	console.log(ev);
+
+	alert(ev.deltaY)
+
+	return ev.deltaY
+});
+
+hammer.on('swipedown', function(ev) {
+
+	alert(ev.deltaY)
+
+	console.log(ev);
+
+	return ev.deltaY
+});
+
+
+
+
+
+
+
+
+
+
+
+			
   			
 
 
