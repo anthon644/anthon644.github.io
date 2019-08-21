@@ -383,34 +383,481 @@ scene.add( starField );
 
 
 
+  var hammer = new Hammer.Manager(document.querySelector('canvas'), {
+    touchAction: 'auto',
+    inputClass: Hammer.SUPPORT_POINTER_EVENTS ? Hammer.PointerEventInput : Hammer.TouchMouseInput,
+    recognizers: [
+      [Hammer.Swipe, {
+        direction: Hammer.DIRECTION_VERTICAL
+      }]
+    ]
+  });
+
+ 
+// FOR MOBILE ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+hammer.on('swipe', function(ev) {
+
+
+	ev.deltaY;
+
+
+
+				if(ev.deltaY > 0  && camera.position.y == 0){
+
+				 TweenMax.fromTo(camera.position, 1, {y: camera.position.y,}, {y:'+=0', ease: Expo.easeInOut, 
+
+				 	onUpdate: function(){
+
+				 	document.removeEventListener('wheel', mousewheel)
+
+
+
+				 }, 
+
+
+				 	onComplete: function(){document.addEventListener('wheel', mousewheel)
+
+
+
+
+				 }});
+
+				
+				}
+
+
+
+				//SWITCH TO NEXT SLIDE (NAME) : 
+
+				if(ev.deltaY < 0 && camera.position.y == 0){			
+					
+				 TweenMax.fromTo(camera.position, 1, {y: camera.position.y,}, {y:'+=-10', ease: Expo.easeInOut, 
+
+
+				 	onUpdate: function(){
+
+				 	document.removeEventListener('wheel', mousewheel)
+
+
+
+				 }, 
+
+
+				 	onComplete: function(){document.addEventListener('wheel', mousewheel)
+
+
+
+
+				 }});
+
+					for (var i = 0; i < cubearray.length; i++) {
+
+	  					TweenMax.fromTo(cubearray[i].position, 0.8, {y: cubearray[i].position.y,}, {y: "+= -10", ease: Expo.easeInOut});
+				
+						TweenMax.fromTo(cubearray[i].scale, 1, {y: cubearray[i].scale.y,}, {y: 10, ease: Expo.easeInOut});
+
+						TweenMax.to(h, 0.5, {h: 200, ease: Expo.easeInOut, roundProps:"h"},);
+						TweenMax.to(s, 0.5, {s: 10, ease: Expo.easeInOut, roundProps:"s"},);
+						TweenMax.to(l, 0.5, {l: 2, ease: Expo.easeInOut, roundProps:"l"},);
+
+
+
+	  					TweenMax.to(cubearray[i].scale, 1, {y: 0.08, ease: Expo.easeInOut, delay: 0.8},);		
+
+					}					
+					
+
+				}
+
+
+				if(ev.deltaY > 0 && camera.position.y == -10){
+
+				 TweenMax.fromTo(camera.position, 1, {y: camera.position.y,}, {y:'+=10', ease: Expo.easeInOut, 
+
+
+				 	onUpdate: function(){
+
+				 	document.removeEventListener('wheel', mousewheel)
+
+
+
+				 }, onComplete: function(){
+
+
+				 	document.addEventListener('wheel', mousewheel)}});
+
+
+
+
+					for (var i = 0; i < cubearray.length; i++) {
+
+	  					TweenMax.fromTo(cubearray[i].position, 0.8, {y: cubearray[i].position.y,}, {y: "+=10", ease: Expo.easeInOut});
+				
+						TweenMax.fromTo(cubearray[i].scale, 1, {y: cubearray[i].scale.y,}, {y: 10, ease: Expo.easeInOut});
+
+						TweenMax.to(h, 0.5, {h: 200, ease: Expo.easeInOut, roundProps:"h"},);
+						TweenMax.to(s, 0.5, {s: 10, ease: Expo.easeInOut, roundProps:"s"},);
+						TweenMax.to(l, 0.5, {l: 2, ease: Expo.easeInOut, roundProps:"l"},);
+
+
+
+	  					TweenMax.to(cubearray[i].scale, 1, {y: 0.08, ease: Expo.easeInOut, delay: 0.8},);		
+
+					}	
+				
+				}
+
+
+				//SWITCH TO NEXT SLIDE (FROM) : 
+		
+
+				if(ev.deltaY < 0 && camera.position.y == -10){
+
+				TweenMax.fromTo(camera.position, 1.5, {y: camera.position.y,}, {y:'+=-10', ease: Expo.easeInOut, 
+
+					onUpdate: function(){
+
+				 	document.removeEventListener('wheel', mousewheel)
+
+
+
+				 }, 
+
+
+				 	onComplete: function(){document.addEventListener('wheel', mousewheel)
+
+
+
+				 }});
+
+
+
+					for (var i = 0; i < cubearray.length; i++) {
+
+	  					TweenMax.fromTo(cubearray[i].position, 1.5, {y: cubearray[i].position.y,}, {y: "+= -10" ,delay: 0.3, ease: Expo.easeInOut});
+
+						TweenMax.to(cubearray[i].rotation, 0.8, {x: 0, y: 0, z: 0, ease: Expo.easeInOut});
+						TweenMax.fromTo(cubearray[i].scale, 1.2, {y: cubearray[i].scale.y,}, {y: 15, ease: Expo.easeInOut});
+
+
+						TweenMax.to(h, 0.5, {h: 200, ease: Expo.easeInOut, roundProps:"h"},);
+						TweenMax.to(s, 0.5, {s: 10, ease: Expo.easeInOut, roundProps:"s"},);
+						TweenMax.to(l, 0.5, {l: 2, ease: Expo.easeInOut, roundProps:"l"},);
+
+	  					TweenMax.to(cubearray[i].scale, 1, {y: 0.1, ease: Expo.easeInOut, delay: 0.8},);
+
+
+
+					}
+
+				}
+
+
+				if(ev.deltaY > 0  && camera.position.y == -20){
+
+				 TweenMax.fromTo(camera.position, 1, {y: camera.position.y,}, {y:'+=10', ease: Expo.easeInOut, 
+
+
+				 	onUpdate: function(){
+
+				 	document.removeEventListener('wheel', mousewheel)
+
+
+
+				 }, onComplete: function(){document.addEventListener('wheel', mousewheel)
+
+
+
+				}});
+
+
+
+					for (var i = 0; i < cubearray.length; i++) {
+
+	  					TweenMax.fromTo(cubearray[i].position, 0.5, {y: cubearray[i].position.y,}, {y: "+=10" ,delay: 0.3, ease: Expo.easeInOut});
+
+						TweenMax.to(cubearray[i].rotation, 1, {
+
+							x: Math.random() * 2,
+							y: Math.random() * 2,
+							z: Math.random() * 2, ease: Expo.easeInOut});
 
 
 
 
 
-var hammer = new Hammer(document);
+						TweenMax.fromTo(cubearray[i].scale, 1.2, {y: cubearray[i].scale.y,}, {y: 15, ease: Expo.easeInOut});
 
-var swipe = new Hammer.Swipe();
 
-hammer.add(swipe);
+						TweenMax.to(h, 0.5, {h: 200, ease: Expo.easeInOut, roundProps:"h"},);
+						TweenMax.to(s, 0.5, {s: 10, ease: Expo.easeInOut, roundProps:"s"},);
+						TweenMax.to(l, 0.5, {l: 2, ease: Expo.easeInOut, roundProps:"l"},);
 
-hammer.on('swipeup', function(ev) {
+	  					TweenMax.to(cubearray[i].scale, 1, {y: 0.1, ease: Expo.easeInOut, delay: 0.8},);
 
-	console.log(ev);
 
-	alert(ev.deltaY)
 
-	return ev.deltaY
+					}
+				
+				}
+
+
+
+
+				if(ev.deltaY < 0  && camera.position.y == -20){
+
+				TweenMax.fromTo(camera.position, 1.5, {y: camera.position.y,}, {y:'+=-10', ease: Elastic.easeOut.config(0.2, 0.3), 
+
+
+
+					onUpdate: function(){
+				 	document.removeEventListener('wheel', mousewheel)
+
+
+				 }, 
+
+
+
+				 	onComplete: function(){document.addEventListener('wheel', mousewheel)
+
+
+
+
+				 }});
+
+
+					for (var i = 0; i < cubearray.length; i++) {
+
+	  					TweenMax.fromTo(cubearray[i].position, 1, {y: cubearray[i].position.y,}, {y: "+= -10" ,delay: 0.3, ease: Expo.easeInOut});
+
+						
+						TweenMax.fromTo(cubearray[i].scale, 1.5, {y: cubearray[i].scale.y,}, {y: 15, ease: Expo.easeInOut});
+
+	  					TweenMax.to(cubearray[i].scale, 1, {y: 0.1, ease: Expo.easeInOut, delay: 0.8},);
+
+
+
+					}
+
+
+						
+
+						TweenMax.fromTo(model.scene.position, 1.5, {y: model.scene.position.y,}, {y: -39, delay:0.2 ,ease: Elastic.easeOut.config(2, 0.4)});
+
+					}
+
+
+				if(ev.deltaY > 0 && camera.position.y == -30){
+
+				 TweenMax.fromTo(camera.position, 1, {y: camera.position.y,}, {y:'+=10', ease: Expo.easeInOut, 
+
+
+				 	onUpdate: function(){
+				 	document.removeEventListener('wheel', mousewheel)
+
+				 }, 
+
+
+
+				 	onComplete: function(){document.addEventListener('wheel', mousewheel)
+
+
+
+
+
+				 }});
+
+
+					for (var i = 0; i < cubearray.length; i++) {
+
+	  					TweenMax.fromTo(cubearray[i].position, 1, {y: cubearray[i].position.y,}, {y: "+= 10" ,delay: 0.3, ease: Expo.easeInOut});
+
+						
+						TweenMax.fromTo(cubearray[i].scale, 1.5, {y: cubearray[i].scale.y,}, {y: 15, ease: Expo.easeInOut});
+
+	  					TweenMax.to(cubearray[i].scale, 1, {y: 0.1, ease: Expo.easeInOut, delay: 0.8},);
+
+					}
+
+				
+				}
+
+
+
+
+
+
+
+
+
+
+
+				if(ev.deltaY < 0 && camera.position.y == -30){
+
+					for (var i = 0; i < cubearray.length; i++) {
+
+						TweenMax.to(cubearray[i].rotation, 0.8, {x: Math.PI / 2, y: 0, z: 0, ease: Expo.easeInOut});
+				
+						TweenMax.fromTo(cubearray[i].scale, 0.5, {y: cubearray[i].scale.y,}, {y: 10, ease: Expo.easeInOut});
+
+						TweenMax.to(cubearray[i].position, 1.5, {z: -20, ease: Expo.easeInOut,delay: 0.1});
+
+	  					TweenMax.to(cubearray[i].scale, 0.8, {y: 0.1, ease: Expo.easeInOut, delay: 0.8},);
+
+					}	
+
+					for (var i = 0; i < cubearraytwo.length; i++) {
+
+						TweenMax.to(cubearraytwo[i].position, 1.5, {
+
+							x: Math.floor(Math.random() * (20 - -20 + 1) + -20),
+							y: Math.floor(Math.random() * (-45 - -35 + 1) + -35),
+							z: Math.floor(Math.random() * (-5 - -25 + 1) + -25),
+
+
+							ease: Expo.easeInOut,delay: 1});
+
+
+						TweenMax.to(cubearraytwo[i].rotation, 4, {
+
+							x: Math.random() * 4,
+							y: Math.random() * 4,
+							z: Math.random() * 4,
+
+
+							ease: Expo.easeInOut,delay: 0.2});
+
+						TweenMax.to(spritesix.position, 1, {
+
+							x: 0,
+						
+							ease: Expo.easeOut,delay: 0.2});
+
+				
+
+
+					}		
+
+
+				TweenMax.fromTo(camera.position, 1.5, {y: camera.position.y,}, {y:'+=-10',delay: 1, ease: Elastic.easeOut.config(0.2, 0.3), 
+
+
+					onUpdate: function(){
+				 	document.removeEventListener('wheel', mousewheel)
+
+
+
+				 }, 
+
+
+
+
+				 	onComplete: function(){document.addEventListener('wheel', mousewheel)
+
+
+
+				 }});
+
+
+				TweenMax.fromTo(model.scene.position, 2, {z: model.scene.position.z,}, {z: -40 ,ease: Expo.easeInOut});
+
+
+
+
+						TweenMax.to(h, 1, {h: 200, ease: Expo.easeInOut, roundProps:"h"},);
+						TweenMax.to(s, 1, {s: 20, ease: Expo.easeInOut, roundProps:"s"},);
+						TweenMax.to(l, 1, {l: 2, ease: Expo.easeInOut, roundProps:"l"},);
+
+					}
+
+
+
+					//INVERT :
+
+
+
+				if(ev.deltaY > 0 && camera.position.y == -40){
+
+
+
+
+
+					
+
+
+				TweenMax.fromTo(camera.position, 1.5, {y: camera.position.y,}, {y:-30, ease: Elastic.easeOut.config(0.2, 0.3), 
+
+
+
+					onUpdate: function(){
+				 	document.removeEventListener('wheel', mousewheel)
+
+
+
+
+				 }, 
+
+
+
+				 	onComplete: function(){document.addEventListener('wheel', mousewheel)
+
+
+
+
+				 }});
+
+
+
+				for (var i = 0; i < cubearray.length; i++) {
+
+						TweenMax.to(cubearray[i].rotation, 1, {x: 0, y: 0, z: 0,delay: 2, ease: Expo.easeInOut});
+				
+						TweenMax.fromTo(cubearray[i].scale, 0.5, {y: cubearray[i].scale.y,}, {y: 10, ease: Expo.easeInOut});
+
+						TweenMax.to(cubearray[i].position, 1.5, {z: Math.floor(Math.random() * (0 - -10 + 1) + -10), ease: Expo.easeInOut,delay: 0.1});
+
+	  					TweenMax.to(cubearray[i].scale, 0.8, {y: 0.1, ease: Expo.easeInOut, delay: 0.8},);
+
+					}	
+
+
+
+					for (var i = 0; i < cubearraytwo.length; i++) {
+
+						TweenMax.to(cubearraytwo[i].position, 1.5, {
+
+							x: 0,
+							y: -40,
+							z: -5,
+
+
+							ease: Expo.easeInOut,delay: 0.1});
+
+
+
+						TweenMax.to(spritesix.position, 2, {
+
+							x: -20,
+						
+
+
+							ease: Expo.easeInOut,delay: 0.2});
+
+
+					}						
+
+				TweenMax.fromTo(model.scene.position, 2, {z: model.scene.position.z,}, {z: -10 ,ease: Expo.easeInOut});
+
+
+					}	
 });
 
-hammer.on('swipedown', function(ev) {
 
-	alert(ev.deltaY)
 
-	console.log(ev);
 
-	return ev.deltaY
-});
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -421,8 +868,6 @@ hammer.on('swipedown', function(ev) {
 
 
 
-
-			
   			
 
 
