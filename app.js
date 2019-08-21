@@ -399,6 +399,7 @@ scene.add( starField );
 
 hammer.on('swipe', function(ev) {
 
+ev.preventDefault();
 
 	ev.deltaY;
 
